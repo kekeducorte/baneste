@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano de Estudos — Banestes 2026</title>
+<style>
+:root{--navy:#18324b;--green:#218443;--bg:#f4f6f8;--line:#dce2e8;--text:#24313d;--muted:#667585;--gold:#f5e7b5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:14px/1.45 Arial,Helvetica,sans-serif;color:var(--text)}
+header{background:linear-gradient(120deg,#17334d,#244d6d);color:#fff;padding:26px 22px}
+.wrap{max-width:1180px;margin:auto}header h1{margin:0 0 7px;font-size:clamp(23px,4vw,32px)}header p{margin:0;color:#e2edf5}
+main{max-width:1180px;margin:22px auto;padding:0 14px}
+.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.stat{background:white;border:1px solid var(--line);border-radius:12px;padding:15px}.stat span{display:block;color:var(--muted);font-size:12px}.stat strong{display:block;font-size:23px;margin-top:4px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:16px}
+.panel h2{font-size:18px;margin:0 0 8px}.note{color:var(--muted);font-size:12px;margin:0 0 14px}
+.progress-track{height:10px;background:#e8edf1;border-radius:20px;overflow:hidden;margin-top:9px}.progress-fill{height:100%;width:0;background:#2b8b4b;transition:width .2s}
+.table-wrap{overflow-x:auto}.study-table{width:100%;border-collapse:collapse;min-width:830px}.study-table th{font-size:11px;text-transform:uppercase;letter-spacing:.03em;background:#f0f3f6;text-align:left;padding:11px 8px;border:1px solid #d6dde4}.study-table td{padding:9px 7px;border:1px solid #e0e5ea;vertical-align:middle}.study-table td:first-child{font-weight:bold;text-align:center;width:38px}.study-table input,.study-table select{width:100%;border:1px solid #d5dce3;border-radius:6px;padding:9px 7px;background:#fff;color:#263746;font:inherit}.study-table input[type=checkbox]{width:18px;height:18px;accent-color:#218443;cursor:pointer}.subject{min-width:205px;font-weight:600}.tag{font-size:11px;color:#516171;display:block;font-weight:normal;margin-top:3px}
+.controls{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}.btn{border:0;border-radius:7px;padding:11px 14px;font-weight:bold;cursor:pointer;background:#e9edf1;color:#23384b}.btn.primary{background:var(--navy);color:#fff}.btn.green{background:var(--green);color:#fff}.btn.gold{background:#f2e5b0;color:#463a14}.btn.red{background:#f9e1e1;color:#852b2b}.btn:hover{filter:brightness(.96)}.message{min-height:20px;color:#267542;font-size:12px;margin-top:10px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:12px;color:var(--muted)}.field input,.field select{padding:10px;border:1px solid var(--line);border-radius:7px;background:#fff;font:inherit}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}.day{border:1px solid var(--line);border-radius:9px;padding:10px;background:#fbfcfd}.day strong{display:block;font-size:12px}.day span{font-size:11px;color:var(--muted)}.day input{width:100%;margin-top:8px;border:1px solid var(--line);border-radius:6px;padding:7px}
+footer{max-width:1180px;margin:0 auto;padding:0 14px 28px;color:var(--muted);font-size:12px}
+@media(max-width:760px){.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.two-col{grid-template-columns:1fr}.week{grid-template-columns:repeat(2,minmax(0,1fr))}.panel{padding:13px}header{padding:22px 15px}}
+@media print{header{background:#fff;color:#000;padding:10px 0}.panel,.stat{break-inside:avoid}.controls{display:none}body{background:white}.wrap,main,footer{max-width:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Plano de Estudos — Banestes 2026</h1>
+<p>Técnico Bancário • FCC • Prova prevista para 24 de janeiro de 2027</p>
+</div></header>
+<main>
+<section class="summary">
+<div class="stat"><span>Disciplinas no plano</span><strong id="totalSubjects">9</strong></div>
+<div class="stat"><span>Conteúdos concluídos</span><strong id="doneCount">0/9</strong></div>
+<div class="stat"><span>Progresso geral</span><strong id="percent">0%</strong><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div></div>
+<div class="stat"><span>Questões na prova</span><strong>70</strong><span>30 gerais + 40 específicas</span></div>
+</section>
+
+<section class="panel">
+<h2>Configuração do cronograma</h2>
+<p class="note">Ajuste a disponibilidade semanal. O plano sugerido prioriza as matérias pelo número de questões e pelo peso informado na imagem do edital.</p>
+<div class="two-col">
+<div class="field"><label for="startDate">Data de início</label><input type="date" id="startDate" value="2026-10-26"></div>
+<div class="field"><label for="examDate">Data da prova</label><input type="date" id="examDate" value="2027-01-24"></div>
+<div class="field"><label for="hours">Horas de estudo por dia</label><select id="hours"><option value="1">1 hora</option><option value="2" selected>2 horas</option><option value="3">3 horas</option><option value="4">4 horas</option><option value="5">5 horas</option></select></div>
+<div class="field"><label for="days">Dias de estudo por semana</label><select id="days"><option value="5">5 dias</option><option value="6" selected>6 dias</option><option value="7">7 dias</option></select></div>
+</div>
+<div class="controls"><button class="btn green" id="buildPlan">Montar cronograma semanal</button><button class="btn" id="printPlan">Imprimir / salvar PDF</button></div>
+<div class="message" id="planMessage" aria-live="polite"></div>
+</section>
+
+<section class="panel">
+<h2>Ciclo de estudos por disciplina</h2>
+<p class="note">Marque uma disciplina como concluída após estudar o conteúdo planejado. O tipo de atividade, duração e data são editáveis.</p>
+<div class="table-wrap">
+<table class="study-table">
+<thead><tr><th>#</th><th>Disciplina</th><th>Atividade</th><th>Estudo (min)</th><th>Pausa (min)</th><th>Concluído</th><th>Data planejada</th><th>Questões feitas</th><th>Acertos</th></tr></thead>
+<tbody id="subjectRows"></tbody>
+</table>
+</div>
+<div class="controls">
+<button class="btn primary" id="save">Salvar progresso</button>
+<button class="btn" id="export">Exportar dados</button>
+<button class="btn" id="importBtn">Importar dados</button><input id="importFile" type="file" accept=".json,application/json" hidden>
+<button class="btn green" id="nextCycle">Iniciar próximo ciclo</button>
+<button class="btn red" id="clear">Limpar progresso</button>
+</div>
+<div class="message" id="saveMessage" aria-live="polite"></div>
+</section>
+
+<section class="panel">
+<h2>Distribuição semanal sugerida</h2>
+<p class="note">A semana é uma sugestão inicial; use o ciclo acima para registrar o que realmente estudou. Reserve o último dia para revisão, questões e descanso ativo.</p>
+<div class="week" id="weekGrid"></div>
+</section>
+<section class="panel">
+<h2>Estratégia de preparação</h2>
+<div class="two-col">
+<div><strong>Fase 1 — Base teórica</strong><p class="note">Estude teoria e faça questões introdutórias. Priorize Português, Matemática/Raciocínio Lógico e Conhecimentos Bancários.</p></div>
+<div><strong>Fase 2 — Questões FCC</strong><p class="note">Aumente a resolução de questões, mantenha um caderno de erros e revise os assuntos com menor taxa de acerto.</p></div>
+<div><strong>Fase 3 — Revisão e simulados</strong><p class="note">Faça simulados cronometrados, revise fórmulas e conceitos e treine a prova dentro do limite de 4 horas indicado na imagem.</p></div>
+<div><strong>Regra prática</strong><p class="note">A cada sessão, registre questões feitas e acertos. Use o percentual de acertos como indicador de evolução, não como promessa de aprovação.</p></div>
+</div>
+</section>
+</main>
+<footer>Plano pessoal de estudos baseado nas disciplinas e quantidades de questões informadas. Confira o edital oficial e suas retificações para validar o conteúdo programático, os pesos e as regras definitivas. O progresso é salvo neste navegador; para não perder os dados, use “Exportar dados” e guarde o arquivo JSON. GitHub Pages não sincroniza automaticamente o progresso entre dispositivos.</footer>
+<script>
+const subjects = [
+ {name:"Língua Portuguesa",group:"Conhecimentos Gerais",questions:10,weight:1,type:"Videoaulas",minutes:50,break:10},
+ {name:"Matemática / Raciocínio Lógico e Quantitativo",group:"Conhecimentos Gerais",questions:10,weight:1,type:"Videoaulas",minutes:50,break:10},
+ {name:"Atualidades do Mercado Financeiro",group:"Conhecimentos Gerais",questions:5,weight:1,type:"Resumo",minutes:40,break:10},
+ {name:"Ética, Compliance e ESG",group:"Conhecimentos Gerais",questions:5,weight:1,type:"Leitura + questões",minutes:40,break:10},
+ {name:"Conhecimentos Bancários",group:"Conhecimentos Específicos",questions:15,weight:2,type:"Videoaulas",minutes:60,break:10},
+ {name:"Matemática Financeira",group:"Conhecimentos Específicos",questions:5,weight:2,type:"Videoaulas + exercícios",minutes:45,break:10},
+ {name:"Noções de Probabilidade e Estatística",group:"Conhecimentos Específicos",questions:5,weight:2,type:"Videoaulas + exercícios",minutes:45,break:10},
+ {name:"Noções de Informática e Comportamentos Digitais",group:"Conhecimentos Específicos",questions:5,weight:2,type:"Videoaulas + questões",minutes:45,break:10},
+ {name:"Vendas, Negociação e Atendimento",group:"Conhecimentos Específicos",questions:10,weight:2,type:"Videoaulas + questões",minutes:50,break:10}
+];
+const $ = id => document.getElementById(id);
+const today = () => {const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;};
+function datePlus(days){const d=new Date(($("startDate").value||today())+"T12:00:00");d.setDate(d.getDate()+days);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;}
+function renderRows(data){
+ $("subjectRows").innerHTML="";
+ data.forEach((s,i)=>{
+ const tr=document.createElement("tr");
+ tr.innerHTML=`<td>${i+1}</td><td class="subject">${s.name}<span class="tag">${s.group} • ${s.questions} questões • peso ${s.weight}</span></td>
+ <td><select data-k="type" data-i="${i}">${["Videoaulas","Questões","Revisão","Resumo","Leitura + questões","Videoaulas + exercícios","Videoaulas + questões","Simulado"].map(x=>`<option ${s.type===x?"selected":""}>${x}</option>`).join("")}</select></td>
+ <td><input type="number" min="5" step="5" value="${s.minutes}" data-k="minutes" data-i="${i}"></td>
+ <td><input type="number" min="0" step="5" value="${s.break}" data-k="break" data-i="${i}"></td>
+ <td style="text-align:center"><input aria-label="Concluído: ${s.name}" type="checkbox" data-k="done" data-i="${i}" ${s.done?"checked":""}></td>
+ <td><input type="date" value="${s.date||datePlus(i)}" data-k="date" data-i="${i}"></td>
+ <td><input type="number" min="0" value="${s.attempted||0}" data-k="attempted" data-i="${i}"></td>
+ <td><input type="number" min="0" value="${s.correct||0}" data-k="correct" data-i="${i}"></td>`;
+ $("subjectRows").appendChild(tr);
+ });
+ $("subjectRows").querySelectorAll("[data-k]").forEach(el=>el.addEventListener("change",e=>{
+ const i=+e.target.dataset.i,k=e.target.dataset.k;
+ subjects[i][k]=k==="done"?e.target.checked:(["minutes","break","attempted","correct"].includes(k)?Math.max(0,+e.target.value):e.target.value);
+ if(k==="correct" && subjects[i].attempted < subjects[i].correct){subjects[i].attempted=subjects[i].correct;renderRows(subjects)}
+ updateStats();
+ }));
+ updateStats();
+}
+function updateStats(){
+ const done=subjects.filter(s=>s.done).length,p=Math.round(done/subjects.length*100);
+ $("totalSubjects").textContent=subjects.length;$("doneCount").textContent=`${done}/${subjects.length}`;$("percent").textContent=p+"%";$("progressFill").style.width=p+"%";
+}
+function makeWeek(){
+ const names=["Segunda","Terça","Quarta","Quinta","Sexta","Sábado","Domingo"];
+ const assignments=[
+ ["Português","Matemática / Raciocínio Lógico"],
+ ["Conhecimentos Bancários","Matemática Financeira"],
+ ["Português","Vendas e Atendimento"],
+ ["Matemática / Raciocínio Lógico","Probabilidade e Estatística"],
+ ["Conhecimentos Bancários","Informática e Comportamentos Digitais"],
+ ["Atualidades","Ética, Compliance e ESG","Revisão + questões"],
+ ["Descanso ativo","Revisão leve opcional"]
+ ];
+ $("weekGrid").innerHTML="";
+ names.forEach((n,i)=>{const d=document.createElement("div");d.className="day";d.innerHTML=`<strong>${n}</strong><span>${assignments[i].join(" • ")}</span><input aria-label="Meta de estudo ${n}" value="${i===6?"Descanso / revisão":$("hours").value+" h"}" data-day="${i}">`; $("weekGrid").appendChild(d)});
+}
+function getState(){return {subjects,settings:{startDate:$("startDate").value,examDate:$("examDate").value,hours:$("hours").value,days:$("days").value},week:Array.from(document.querySelectorAll("[data-day]")).map(x=>x.value)}}
+function save(show=true){try{localStorage.setItem("banestesStudyPlan",JSON.stringify(getState()));if(show)$("saveMessage").textContent="Progresso salvo neste navegador."; }catch(e){$("saveMessage").textContent="Não foi possível salvar neste navegador. Use Exportar dados como cópia de segurança."}}
+function load(){
+ try{const raw=localStorage.getItem("banestesStudyPlan");if(!raw)return;const d=JSON.parse(raw);
+ if(d.subjects && d.subjects.length===subjects.length)d.subjects.forEach((s,i)=>Object.assign(subjects[i],s));
+ if(d.settings){Object.entries(d.settings).forEach(([k,v])=>{if($(k))$(k).value=v})}
+ renderRows(subjects);makeWeek();if(d.week)d.week.forEach((v,i)=>{const el=document.querySelector(`[data-day="${i}"]`);if(el)el.value=v});
+ }catch(e){}
+}
+$("save").addEventListener("click",()=>save());
+$("buildPlan").addEventListener("click",()=>{
+ const days=+$("days").value,hours=+$("hours").value;
+ subjects.forEach((s,i)=>{s.date=datePlus(Math.floor(i/Math.max(1,Math.ceil(subjects.length/days)))*7+Math.floor(i%days));s.minutes=Math.min(120,Math.max(25,Math.round(hours*60/2/5)*5));});
+ renderRows(subjects);makeWeek();save(false);$("planMessage").textContent=`Cronograma semanal montado para ${days} dias por semana, com meta de ${hours} h por dia. Ajuste as datas e a carga conforme sua rotina.`;
+});
+$("printPlan").addEventListener("click",()=>window.print());
+$("export").addEventListener("click",()=>{const blob=new Blob([JSON.stringify(getState(),null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="plano-estudos-banestes.json";a.click();URL.revokeObjectURL(a.href);$("saveMessage").textContent="Arquivo de dados exportado."});
+$("importBtn").addEventListener("click",()=>$("importFile").click());
+$("importFile").addEventListener("change",async e=>{const f=e.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text());if(!d.subjects||d.subjects.length!==subjects.length)throw Error();d.subjects.forEach((s,i)=>Object.assign(subjects[i],s));if(d.settings)Object.entries(d.settings).forEach(([k,v])=>{if($(k))$(k).value=v});renderRows(subjects);makeWeek();if(d.week)d.week.forEach((v,i)=>{const el=document.querySelector(`[data-day="${i}"]`);if(el)el.value=v});save(false);$("saveMessage").textContent="Dados importados com sucesso."}catch(err){$("saveMessage").textContent="Arquivo inválido ou incompatível."}e.target.value=""});
+$("nextCycle").addEventListener("click",()=>{subjects.forEach(s=>{s.done=false;s.date="";s.attempted=0;s.correct=0;s.type="Revisão"});renderRows(subjects);save(false);$("saveMessage").textContent="Novo ciclo iniciado: disciplinas reiniciadas para revisão, mantendo sua configuração."});
+$("clear").addEventListener("click",()=>{if(!confirm("Tem certeza que deseja apagar o progresso salvo e reiniciar o plano?"))return;localStorage.removeItem("banestesStudyPlan");subjects.forEach(s=>{delete s.done;delete s.date;s.attempted=0;s.correct=0});renderRows(subjects);makeWeek();$("saveMessage").textContent="Progresso limpo."});
+["startDate","examDate","hours","days"].forEach(id=>$(id).addEventListener("change",()=>{makeWeek();save(false)}));
+renderRows(subjects);makeWeek();load();
+</script>
+</body>
+</html>
